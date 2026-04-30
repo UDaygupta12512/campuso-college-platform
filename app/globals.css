@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body { background: #0a0a0f; color: white; }
+
+/* Native select styling */
+select { appearance: none; -webkit-appearance: none; }
+select option { background: #1a1a2e; color: white; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2a2a3f; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a5f; }
+
+/* Number input — hide spinners */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="number"] { -moz-appearance: textfield; }

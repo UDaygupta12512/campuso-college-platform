@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model College {
+  id           Int      @id @default(autoincrement())
+  name         String
+  location     String
+  city         String
+  state        String
+  fees         Int
+  rating       Float
+  courses      String
+  placement    Float
+  avgPackage   Int
+  topCompanies String
+  image        String?
+  tier         String
+  examAccepted String
+  established  Int
+  totalSeats   Int
+  createdAt    DateTime @default(now())
+
+  questions    Question[]
+}
+
+model Question {
+  id         Int      @id @default(autoincrement())
+  title      String
+  body       String
+  author     String
+  collegeId  Int?
+  college    College? @relation(fields: [collegeId], references: [id])
+  createdAt  DateTime @default(now())
+  answers    Answer[]
+}
+
+model Answer {
+  id         Int      @id @default(autoincrement())
+  body       String
+  author     String
+  questionId Int
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+}
