@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model College {
@@ -15,13 +15,13 @@ model College {
   state        String
   fees         Int
   rating       Float
-  courses      String
+  courses      String[]
   placement    Float
   avgPackage   Int
-  topCompanies String
+  topCompanies String[]
   image        String?
   tier         String
-  examAccepted String
+  examAccepted String[]
   established  Int
   totalSeats   Int
   createdAt    DateTime @default(now())
